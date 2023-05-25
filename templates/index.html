@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Главная страница</title>
+	<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/main.css') }}">
+</head>
+<body> 
+	<div class='index-upper'>Вы вошли как {{data['head']['usertypestr']}}<br>{{data['head']['name']}}</div>
+	<div></div>
+	{% if data['head']['authorized'] %}
+		<a href="/personal_{{usertype}}" class='index-button'>Кабинет</a>
+		<a href="/logout" class='index-button'>Выйти</a>
+		{%if data['head']['usertype'] == "tutor"%}
+		<div class="container">
+			<div class="content">
+				<h1><center>Список заявок</center></h1>
+				
+			</div>
+			<div class="content">
+				<h1>Заявка</h1>
+			</div>
+			<div class="content">
+				<h1>Чат</h1>
+			</div>			
+		</div>
+		{%endif%}
+		{%if data['head']['usertype'] == "client"%}
+		<h1>Клиент</h1>
+		{%endif%}
+	{% endif %}
+	{% if not data['head']['authorized'] %}	
+		<a href="/register" class='index-button'>Регистрация</a>
+		<a href="/login" class='index-button'>Авторизация</a>
+		<div></div>
+		<center><b><h1>Наши репетиторы</h1><b><center>
+	{% endif %}		
+</body>
+</html>

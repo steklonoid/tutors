@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Авторизация</title>
+	<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/main.css') }}">
+</head>
+<body>
+	<div class='centered-block'>    
+		<form method="POST" action="/login">
+			<label for="login">Имя пользователя:</label>
+			<input type="text" id="login" name="login" required><br><br>
+			
+			<label for="password">Пароль:</label>
+			<input type="password" id="password" name="password" required><br><br>
+			
+			<input type="submit" value="Войти">
+			<div>{{footer}}</div>
+			<br>
+			<center><a href="/"> На главную </a></center>
+		</form>		
+	</div>
+</body>
+</html>
